@@ -1,0 +1,50 @@
+.container-fluid{
+    background-color: #ff2200;
+    height: 100px;
+}
+  
+.logo{
+    width: 80px;
+    height: 80px;
+    border-radius: 20%;
+    margin-top: 8px;
+    margin-left: 20px;
+
+}
+.nav{
+    margin-top: 30px;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 20px;
+}
+
+
+.nav-content{
+  display: flex;
+  justify-content: center;
+}
+  
+.nav-link{
+    color: #ffff;
+    
+
+}
+
+  
+   /* -- ICON CARRITO DOM --*/
+  
+  .icon{
+    font-size: 40px;
+    margin-top: 16px;
+  
+  }
+
+.menuCarrito{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+
+/* --  Media Query  -- */

@@ -1,0 +1,32 @@
+
+
+
+.text-form{
+    color: #ff2200;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-size: 30px;
+    text-align: center;
+}
+
+
+#text-label{
+    color: #ff2200;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 25px;
+}
+
+
+.btn{
+    font-size: 20px;
+    font-family: 'Times New Roman', Times, serif;
+    background-color: #ff2200;
+    color: #ffff;
+    margin-bottom: 10px;
+    border: none;
+    box-shadow: 2px 1px 3px 2px rgb(255, 163, 163);
+    width: 130px;
+    height: 40px;
+    margin-left: 20px;
+    border-radius: 10%;
+    
+}
