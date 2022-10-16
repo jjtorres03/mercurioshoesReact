@@ -13,7 +13,7 @@ const ItemCount = ({ initial, stock, onAdd}) => {
     }
 
     const restaQty = () => {
-        if (qty > 0) {
+        if (qty > 1) {
             setQty(qty - 1)
         }
     }

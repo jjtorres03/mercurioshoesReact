@@ -15,7 +15,7 @@ export const Cart = () => {
 
             <>
                 <p className="cart-text">No hay Productos en el Carrito</p>
-                <i class="bi bi-arrow-down"></i>
+                <i className="bi bi-arrow-down"></i>
                 <div className="button-contenedor">
                     <Link to='/'><button className="btn-buy">Ir a Comprar</button></Link>
                 </div>
