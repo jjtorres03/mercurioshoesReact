@@ -1,80 +1,107 @@
-import { collection, addDoc } from 'firebase/firestore';
+import { collection, addDoc } from "firebase/firestore";
 import React, { useState } from "react";
-import { db } from '../../firebase/config'
-import { BuyCode } from '../BuyCode/BuyCode';
-import { useCartContext } from '../../CartContext/CartContext';
-import './Checkout.css'
-
-
-
+import { db } from "../../firebase/config";
+import { BuyCode } from "../BuyCode/BuyCode";
+import { useCartContext } from "../../CartContext/CartContext";
+import "./Checkout.css";
 
 export const Checkout = () => {
-    const {cart, priceTotal} = useCartContext();
+    const { cart, priceTotal, clearCart } = useCartContext();
+    const [inputs, setInputs] = useState({
+        name: "",
+        lastname: "",
+        email: "",
+        phone: "",
+    });
+    const [buycode, setBuyCode] = useState("");
 
-    const order = {
-        buyer: {
-            name: "",
-            lastName: "",
-            mail: "",
-            phone: "",
-        },
-        item : cart.map(product => ({ title : product.title, price: product.price, quantity: product.quantity })),
-        total : priceTotal()
-    }
-
-    const [orders, setOrders] = useState(order);
-    const [buycode, setBuyCode] = useState('');
-
-    const handleChange = (e) => {
+    const handleOnChange = (e) => {
         const { value, name } = e.target;
-        setOrders({ ...orders, [name]: value })
-
-    }
-
-    const handleClick = async (e) => {
-        e.preventDefault();
-        const docRef = await addDoc(collection(db, 'ordersbuy'), {
-            orders,
-        })
-
-        setOrders(orders);
-        setBuyCode(docRef.id)
+        setInputs({ ...inputs, [name]: value });
     };
 
+    const handleClick = (e) => {
+        e.preventDefault();
+        const order = {
+            buyer: inputs,
+            item: cart.map((product) => ({ title: product.title, price: product.price, quantity: product.quantity })),
+            total: priceTotal(),
+        };
 
+        const collectionRef = collection(db, "ordersbuy");
+        addDoc(collectionRef, order).then(({ id }) => setBuyCode(id));
+        setInputs("");
+        clearCart();
+    };
 
     return (
-
-        
         <form className="row g-3 justify-content-center mt-5" onSubmit={handleClick}>
-            <h1 className='text-form'>Formulario para validar tu Compra</h1>
+            <h1 className="text-form">Formulario para validar tu Compra</h1>
             <div className="col-md-3 mt-5">
-                <label id="text-label" form="validationDefault01" className="form-label">Nombre</label>
-                <input type="text" className="form-control" name="name" id="validationDefault01" value={orders.name} onChange={handleChange} required></input>
+                <label id="text-label" form="validationDefault01" className="form-label">
+                    Nombre
+                </label>
+                <input
+                    type="text"
+                    className="form-control"
+                    name="name"
+                    id="validationDefault01"
+                    onChange={handleOnChange}
+                    required
+                ></input>
             </div>
             <div className="col-md-3 mt-5">
-                <label id="text-label" form="validationDefault02" className="form-label">Apellido</label>
-                <input type="text" className="form-control" name="lastName" id="validationDefault02" value={orders.lastName} onChange={handleChange} required></input>
+                <label id="text-label" form="validationDefault02" className="form-label">
+                    Apellido
+                </label>
+                <input
+                    type="text"
+                    className="form-control"
+                    name="lastName"
+                    id="validationDefault02"
+                    onChange={handleOnChange}
+                    required
+                ></input>
             </div>
             <div className="row justify-content-center mt-5">
                 <div className="col-md-3">
-                    <label id="text-label" form="validationDefaultUsername" className="form-label">Gmail</label>
+                    <label id="text-label" form="validationDefaultUsername" className="form-label">
+                        Gmail
+                    </label>
                     <div className="input-group">
-                        <span className="input-group-text" id="inputGroupPrepend2">@</span>
-                        <input type="text" className="form-control" name="mail" id="validationDefaultUsername" value={orders.mail} onChange={handleChange}  required></input>
+                        <span className="input-group-text" id="inputGroupPrepend2">
+                            @
+                        </span>
+                        <input
+                            type="text"
+                            className="form-control"
+                            name="email"
+                            id="validationDefaultUsername"
+                            onChange={handleOnChange}
+                            required
+                        ></input>
                     </div>
                 </div>
                 <div className="col-md-3">
-                    <label id="text-label" form="validationDefault03" className="form-label">Telefono</label>
-                    <input type="text" className="form-control" name="phone" id="validationDefault03" value={orders.phone} onChange={handleChange} required></input>
+                    <label id="text-label" form="validationDefault03" className="form-label">
+                        Telefono
+                    </label>
+                    <input
+                        type="text"
+                        className="form-control"
+                        name="phone"
+                        id="validationDefault03"
+                        onChange={handleOnChange}
+                        required
+                    ></input>
                 </div>
             </div>
             <div className="col-12 text-center">
-                <button className="btn btn-primary" type="submit">Enviar</button>
+                <button className="btn btn-primary" type="submit">
+                    Enviar
+                </button>
             </div>
             {buycode && <BuyCode buycode={buycode} />}
         </form>
-
-
-    )
-} 
+    );
+};

@@ -13,32 +13,29 @@ export const Cart = () => {
     if (cart.length === 0) {
         return (
 
-            //      <div className="cart-contenedor">
             <>
                 <p className="cart-text">No hay Productos en el Carrito</p>
-                <Link to='/'><button className="btn-buy">Ir a Comprar</button></Link>
+                <i class="bi bi-arrow-down"></i>
+                <div className="button-contenedor">
+                    <Link to='/'><button className="btn-buy">Ir a Comprar</button></Link>
+                </div>
+
             </>
-
-            //  <i className="bi bi-arrow-down"></i>
-            //   <div className="btn-contenedor">
-            //    </div>
-            //   </div>
-
         )
     }
 
-        return (
-            <>
-                <div className="cart">
-                    {
-                        cart.map(product => <ItemCart key={product.id} product={product} />)
-                    }
-                    <p className="totalPrecio">Total Compra : $ {priceTotal()}</p>
-                    <div className="cart-button-checkout">
-                        <Link to='/Checkout'><button className="cart-checkout" type="button">Checkout<i className="bi bi-arrow-right-short"></i></button></Link>
-                    </div>
+    return (
+        <>
+            <div className="cart">
+                {
+                    cart.map(product => <ItemCart key={product.id} product={product} />)
+                }
+                <p className="totalPrecio">Total Compra: $ {priceTotal()}</p>
+                <div className="cart-button-checkout">
+                    <Link to='/Checkout'><button className="cart-checkout" type="button">Checkout<i className="bi bi-arrow-right-short"></i></button></Link>
                 </div>
-            </>
-        )
-    
+            </div>
+        </>
+    )
+
 }

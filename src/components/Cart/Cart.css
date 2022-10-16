@@ -11,16 +11,27 @@
 
 
 .cart-text{
+    margin-top: 100px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-size: 30px;
     color: #ff2200;
+    text-align: center;
+   
 }
 
-.btn-contenedor{
-    margin-top: 30px;
+
+.bi{
     display: flex;
-
+    justify-content: center;
+    font-size: 50px;
 }
+
+.button-contenedor{
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
 
 .btn-buy{
     color: #ffff;
@@ -31,13 +42,9 @@
     border-radius: 5px;
     width: 200px;
     height: 60px;
+
 }
 
-
-.bi{
-    font-size: 30px;
-    
-}
 
 
 .totalPrecio {
