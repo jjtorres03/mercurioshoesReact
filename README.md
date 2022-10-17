@@ -42,7 +42,7 @@ __Carrito de Compra__
 6. Total.
 7. Boton de Eliminar.
 
-*Cuenta con su respectivo Boton de Checkout que te llevar a la vista de un formulario para validar Tu compra.*
+*Cuenta con su respectivo Boton de Checkout que te llevar a la vista de un formulario para validar Tu compra. Todo producto que selecciones se guardaran en el localStorage.*
 *Cabe resaltar si no has seleccionado algun productos y vas al carrito del compra el mismo te mostra un **mensaje que no hay productos en el carrito** y encontraras un **boton** que te llevara a la pagina de inicio*
 
 
@@ -51,7 +51,7 @@ __Formulario De validacion__
 *Encontaremos un formulario con diferentes campos los cual al ser llenados y enviando esa informacion nos traera un **id** haciendo la solicitud a firebase para traer ese **id** lo cual hara referencia a tu codigo de compra.!*
 
 ### Imprementacion: 
-*Podemos encontrar en nuestro proyecto la creacion de varios componentes con funcionalidades, Uso de Context Para el estado de nuestro carrito, Props, Firebase, Rutas, Promesas, etc.*
+*Podemos encontrar en nuestro proyecto la creacion de varios componentes con funcionalidades, Uso de Context Para el estado de nuestro carrito, Props, Firebase, Rutas, Promesas, LocalStorage etc.*
 
 
 ### Herramientas Utilizadas:
